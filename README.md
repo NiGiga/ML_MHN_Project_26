@@ -158,7 +158,7 @@ The logical correctness of each sampled trace is verified a posteriori using **S
 ### 3.5 Corrupting Traces
 
 To generate corrupted inputs to feed into the network, each valid trace is perturbed using random bit-flips: each component of the vector is flipped with probability $\rho$, independently of the others.
-Five levels of corruption are considered: $\rho \in {5\%, 10\%, 15\%, 20\%, 25\% }$, which correspond respectively to $1-5$ flipped bits on a vector of size $20 \ (T=5,n=4)$.
+Five levels of corruption are considered: $\rho \in$ {$5\%, 10\%, 15\%, 20\%, 25\% $}, which correspond respectively to $1-5$ flipped bits on a vector of size $20 \ (T=5,n=4)$.
 Each combination of formula and corruption level produces an independent test case, allowing the correct recovery rate to be measured as a function of the introduced noise.
 
 ### 3.6 Final Format of the Dataset
