@@ -1,4 +1,12 @@
 # Reti di Hopfield per il recupero di pattern logici LTLf
+📚 Lingua / Language: [🇮🇹 Italiano (this file)](#) | [🇬🇧 English](../README.md)
+
+[![C](https://img.shields.io/badge/C-00599C?logo=c&logoColor=white)](#)
+[![NumPy](https://img.shields.io/badge/NumPy-4DABCF?logo=numpy&logoColor=fff)](#)
+[![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=fff)](#)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Status](https://img.shields.io/badge/status-complete-green?style=for-the-badge)
+
 
 **Nome:** Nicola Ggante
 
@@ -576,7 +584,9 @@ ML_Course_Project/
 │   └── test_sanity.py                  # Recupero perfetto, monotonia energia, capacità
 │
 └── report/
-│   └── relazione.md                    
+│   └── relazione.md
+│
+└── README.md                           # English                    
 ```
 
 ## Appendice B — Parametri sperimentali
