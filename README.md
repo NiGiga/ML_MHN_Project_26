@@ -237,7 +237,7 @@ This architectural difference is fundamental: in a classical network, informatio
 
 Retrieval is structured in three levels. The private method `_step()` implements a single step of the update rule:
 
-$$ \mathbf{q}^{t+1)} = \mathbf{X}^{\top} \operatorname{softmax} \Big(\beta \mathbf{X} \mathbf{q}^{(t)} \Big)$$
+$$ \mathbf{q}^{t+1)} = \mathbf{X}^{\top} \text{softmax} \Big(\beta \mathbf{X} \mathbf{q}^{(t)} \Big)$$
 
 Numerical stabilization is applied by subtracting the maximum of the scores before the exponential, preventing overflow without altering the softmax result.
 The `retrieve()` method iterates `_step()` for a fixed number of steps and returns the final continuous state.
