@@ -9,8 +9,6 @@
 
 **Name:** Nicola Ggante
 
-**Student ID:** SM3201239
-
 **Course:** Introduction to Machine Learning 
 
 **Academic Year:** 2025/2026

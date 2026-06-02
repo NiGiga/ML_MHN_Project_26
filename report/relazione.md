@@ -10,8 +10,6 @@
 
 **Nome:** Nicola Ggante
 
-**Matricola:** SM3201239
-
 **Corso:** Introduzione al Machine Learning 
 
 **Anno scolastico:** 2025/2026
