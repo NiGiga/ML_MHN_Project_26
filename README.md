@@ -295,7 +295,7 @@ Passing these checks ensures that the experiments operate on correct and complet
 ### 6.1 Experimental Setup
 
 All experiments share a common set of parameters. The patterns used are binary vectors in $\{\pm 1\}$ of size $N=20$, extracted from the LTLf dataset described in Chapter 3.
-The corruption rates considered are $\rho \in \{5\%, 10\%, 15\%, 20\%, 25\% \}$, applied via independent bit-flips on each component.
+The corruption rates considered are $\rho \in$ {5\%, 10\%, 15\%, 20\%, 25\% }, applied via independent bit-flips on each component.
 For each combination of parameters, 200 trials are run with a fixed seed ($\text{seed=0}$) to ensure reproducibility.
 The main metrics are the **correct retrieval rate** (fraction of trials in which the binarized output exactly matches the original pattern), the **number of steps to convergence**, and the **energy profile** during retrieval.
 The MHN is configured with $\beta = 1.0$ and a maximum of $20$ steps; the classical network with a maximum of $20$ asynchronous update epochs.
