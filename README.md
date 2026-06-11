@@ -11,7 +11,7 @@
 
 **Course:** Introduction to Machine Learning 
 
-**Academic Year:** 2025/2026
+**Academic Year:** 2025-2026
 
 ## Abstract
 
