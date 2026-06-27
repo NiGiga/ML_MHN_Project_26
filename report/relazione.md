@@ -440,7 +440,7 @@ Come si può vedere dal grafico, il risultato di questo sovraccarico è un cedim
 Tuttavia, poiché lo spazio è saturo, gli attrattori della rete classica collassano e si fondono. Il rumore spinge quasi tutte le query oltre le creste energetiche, facendo sì che la rete finisca in minimi spuri o negli attrattori dei modelli sbagliati. Da un punto di vista termodinamico, la rete converge, ma da un punto di vista logico, il recupero è completamente compromesso.
 \
 \
-![PCA](results/pceCH.png)
+![PCA](../results/pceCH.png)
 \
 \
 Se, invece, passiamo alla rete di Hopfield moderna (MHN), testata esattamente sullo stesso spazio con gli stessi 12 pattern e le stesse query corrotte, la situazione si inverte.
@@ -451,7 +451,7 @@ Grazie alla regola di attenzione basata su Softmax e all’energia continua, la 
 C’è un’unica eccezione visibile: la freccia rossa $C_8 \to M_4$, che termina in $M_{11}$. Si tratta di un dettaglio importante da sottolineare: ci ricorda che il recupero è, dopotutto, un processo statistico governato dal parametro di temperatura $\beta$ e dall’intensità del rumore introdotto, non una sorta di magia. 
 \
 \
-![PCA](results/pcaMHN.png)
+![PCA](../results/pcaMHN.png)
 \
 \
 Tuttavia, il contrasto visivo tra i due grafici dimostra inequivocabilmente il salto generazionale in termini di capacità geometrica offerto dalla rete moderna.
