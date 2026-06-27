@@ -417,7 +417,8 @@ The crucial finding here is that **the upward trend holds true regardless of the
 
 ### 7.1 PCA of Recovery Trajectories
 
-![PCA](results/pca_comparison_subplot.png)
+![PCA](results/pceCH.png)
+![PCA](results/pcaMHN.png)
 
 PCA projects the space $\{ \pm 1 \}^{20}$ onto the two axes of maximum variance, which explain $26.6\%$ (PC1) and $17.6\%$ (PC2) of the total variance of the dataset, respectively.
 The blue points represent the stored patterns, the gray crosses the corrupted queries, the green arrows the recovery trajectories of the classical network, and the red squares the recovered final states of the MHN.
