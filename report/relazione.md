@@ -430,45 +430,32 @@ In regime con pochi pattern memorizzati — ben sotto la capacità teorica di en
 
 ### 7.1 PCA delle traiettorie di recupero
 
-![PCA](../results/pca_comparison_subplot.png)
+Per visualizzare geometricamente ciò che accade durante il recupero, ho mappato lo spazio di stato a 20 dimensioni su un piano bidimensionale utilizzando la PCA.
+Per questo test specifico, ho spinto al limite le possibilità: ho memorizzato ben 12 modelli ortogonali. Vale la pena notare che il limite teorico per una rete classica con 20 neuroni è di circa 3 modelli.
+\
+\
+Come si può vedere dal grafico, il risultato di questo sovraccarico è un cedimento strutturale, evidenziato dalle frecce rosse. Ogni etichetta indica il punto di partenza corrotto e la sua destinazione teorica, ad esempio $C_0 \to M_1$.
+\
+\
+Tuttavia, poiché lo spazio è saturo, gli attrattori della rete classica collassano e si fondono. Il rumore spinge quasi tutte le query oltre le creste energetiche, facendo sì che la rete finisca in minimi spuri o negli attrattori dei modelli sbagliati. Da un punto di vista termodinamico, la rete converge, ma da un punto di vista logico, il recupero è completamente compromesso.
+\
+\
+![PCA](results/pceCH.png)
+\
+\
+Se, invece, passiamo alla rete di Hopfield moderna (MHN), testata esattamente sullo stesso spazio con gli stessi 12 pattern e le stesse query corrotte, la situazione si inverte.
+\
+Grazie alla regola di attenzione basata su Softmax e all’energia continua, la MHN riesce a mantenere attrattori profondi e ben separati anche in condizioni di densità estremamente elevata. Si noti come le query fortemente corrotte, quali $C_9$ o $C_0$, scivolino in modo perfetto e robusto verso la loro esatta origine, $M_1$.
+\
+\
+C’è un’unica eccezione visibile: la freccia rossa $C_8 \to M_4$, che termina in $M_{11}$. Si tratta di un dettaglio importante da sottolineare: ci ricorda che il recupero è, dopotutto, un processo statistico governato dal parametro di temperatura $\beta$ e dall’intensità del rumore introdotto, non una sorta di magia. 
+\
+\
+![PCA](results/pcaMHN.png)
+\
+\
+Tuttavia, il contrasto visivo tra i due grafici dimostra inequivocabilmente il salto generazionale in termini di capacità geometrica offerto dalla rete moderna.
 
-La PCA proietta lo spazio $\{ \pm 1 \}^{20}$ sui due assi di massima varianza, che spiegano rispettivamente il $26.6\%$ (PC1) e il $17.6\%$ (PC2) della varianza totale del dataset.
-I punti blu rappresentano i pattern memorizzati, le croci grige le query corrotte, le frecce verdi le traiettorie di recupero della rete classica e i quadrati rossi gli stati finali recuperati della MHN.
-\
-\
-Nel pannello della rete classica le frecce mostrano che la maggior parte delle query corrotte viene attratta verso il pattern memorizzato più vicino: la traiettorie sono corte e orientate verso il pattern di riferimento, indicando convergenza corretta.
-Si notano tuttavia alcuni casi in cui la query corrotta viene attratta verso un pattern sbagliato — in particolare M1, M6 e M2 mostrano frecce che partono da zone di sovrapposizione tra bacini adiacenti — il che è coerente con il tasso di recupero non perfetto osservato nell'Esperimento 1.
-\
-\
-Nel pannello MHN gli stati recuperati (quadrati rossi) si posizionano in prossimità dei pattern memorizzati corrispondenti, ma con una dispersione maggiore rispetto alla rete classica: questo riflette il fatto che la MHN opera in spazio continuo e il recupero finale è il risultato di binarizzazione, non di un aggiornamento discreto.
-I casi di recupero errato sono visibili come quadrati rossi distanti dal pattern di riferimento, in corrispondenza delle stesse zone di sovrapposizione identificate per la rete classica.
-
-### 7.2 t-SNE dei bacini di attrazione
-
-![t-SNE](../results/tsne_comparison_subplot.png)
-
-Il t-SNE preserva le distanze locali e non quelle globali: la disposizione assoluta dei cluster non ha significato, ma la vicinanza tra punti all'interno di ogni cluster riflette similarità genuina nello spazio originale.
-I pattern memorizzati (punti blu) appaiono come riferimenti fissi attorno ai quali si aggregano le query corrotte (croci grige) e gli stati recuperati (verde per la classica, rosso per la MHN).
-\
-\
-In entrambi i pannelli la struttura a cluster è evidente: per la maggior parte dei pattern — M0, M3, M5, M7, M8, M10 — le query corrotte e i rispettivi stati recuperati sono visivamente raggruppati attorno alla memoria corrispondente, confermando che il recupero avviene correttamente nel vicinato locale.
-I pattern M1, M9 e M4 mostrano invece una maggiore dispersione dei punti recuperati, con alcuni stati che si collocano lontano dalla memoria di riferimento: questi sono i casi di recupero errato già identificati nella PCA.
-\
-\
-La differenza principale tra i due pannelli è nella compattezza dei cluster di recupero: la rete classica (verde) tende a posizionare gli stati recuperati molto vicini alla memoria corrispondente, mentre la MHN (rosso) mostra cluster leggermente più dispersi, coerentemente con la natura continua del suo spazio di recupero prima della binarizzazione. 
-
-### 7.3 Interpretazione geometrica
-
-PCA e t-SNE sono strumenti complementari che descrivono la geometria del recupero a scale diverse.
-La PCA fornisce una visione della **struttura globale**: le traiettorie di recupero mostrano la direzione e la lunghezza del percorso nello spazio ridotto, rendendo visibili le zone di confine tra bacini di attrazione adiacenti.
-Il t-SNE fornisce invece una visione della **struttura locale**: i cluster mostrano quanto compattamente gli stati recuperati si aggregano attorno alle memorie, indipendentemente dalla posizione globale.
-\
-\
-Messi insieme, i due grafici raccontano la stessa storia in due linguaggi diversi: esiste una struttura geometrica ben definita nello spazio degli stati, i pattern memorizzati sono i suoi attrattori, e il recupero è il processo di scivolamento verso il minimo più vicino.
-Le zone in cui i due modelli falliscono — visibili come frecce misdirected nella PCA e come punti isolati nel t-SNE — corrispondono alle stesse regioni di sovrapposizione tra bacini, confermando che gli errori di recupero non sono casuali ma strutturali, legati alla geometria del dataset.
-\
-\
-Questa interpretazione geometrica costituisce la giustificazione visiva delle proprietà teoriche discusse nel Capitolo 2: la funzione di energia non è solo uno strumento matematico, ma descrive una superficie fisica reale, i cui minimi sono visibili e localizzabili nello spazio ridotto. 
 
 ## 8. Discussione
 
