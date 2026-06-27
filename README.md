@@ -443,34 +443,6 @@ There is a single visible exception: the red arrow $C_8 \to M_4$, which ends up 
 \
 However, the visual contrast between the two graphs unequivocally demonstrates the generational leap in geometric capacity offered by the modern network.
 
-
-### 7.2 t-SNE of Catchment Areas
-
-![t-SNE](results/tsne_comparison_subplot.png)
-
-t-SNE preserves local distances but not global ones: the absolute arrangement of the clusters is meaningless, but the proximity between points within each cluster reflects genuine similarity in the original space.
-The stored patterns (blue points) appear as fixed reference points around which the corrupted queries (gray crosses) and the recovered states (green for the classic method, red for MHN) cluster.
-\
-\
-In both panels, the cluster structure is evident: for most patterns—M0, M3, M5, M7, M8, M10—the corrupted queries and their respective recovered states are visually grouped around the corresponding memory, confirming that recovery occurs correctly within the local neighborhood.
-The M1, M9, and M4 patterns, on the other hand, show greater dispersion of the recovered points, with some states located far from the reference memory: these are the cases of incorrect recovery already identified in the PCA.
-\
-\
-The main difference between the two panels lies in the compactness of the recovery clusters: the classical network (green) tends to place the recovered states very close to the corresponding memory, while the MHN (red) shows slightly more dispersed clusters, consistent with the continuous nature of its recovery space prior to binarization. 
-
-### 7.3 Geometric Interpretation
-
-PCA and t-SNE are complementary tools that describe the geometry of recovery at different scales.
-PCA provides an overview of the **global structure**: the recovery trajectories show the direction and length of the path in the reduced space, making visible the boundaries between adjacent catchment areas.
-t-SNE, on the other hand, provides a view of the **local structure**: the clusters show how compactly the retrieved states aggregate around the memories, regardless of their global position.
-\
-\
-Taken together, the two plots tell the same story in two different languages: there is a well-defined geometric structure in the state space, the stored patterns are its attractors, and retrieval is the process of sliding toward the nearest minimum.
-The areas where the two models fail—visible as misdirected arrows in the PCA and as isolated points in the t-SNE—correspond to the same regions of overlap between basins, confirming that recovery errors are not random but structural, linked to the geometry of the dataset.
-\
-\
-This geometric interpretation provides the visual justification for the theoretical properties discussed in Chapter 2: the energy function is not merely a mathematical tool, but describes a real physical surface, whose minima are visible and locatable in the reduced space. 
-
 ## 8. Discussion
 
 ### 8.1 Interpretation of the Results
