@@ -420,16 +420,29 @@ The crucial finding here is that **the upward trend holds true regardless of the
 ![PCA](results/pceCH.png)
 ![PCA](results/pcaMHN.png)
 
-PCA projects the space $\{ \pm 1 \}^{20}$ onto the two axes of maximum variance, which explain $26.6\%$ (PC1) and $17.6\%$ (PC2) of the total variance of the dataset, respectively.
-The blue points represent the stored patterns, the gray crosses the corrupted queries, the green arrows the recovery trajectories of the classical network, and the red squares the recovered final states of the MHN.
+To visualise geometrically what happens during retrieval, I mapped the 20-dimensional state space onto a 2D plane using PCA.
+For this specific test, I pushed the limits: I stored as many as 12 orthogonal patterns. It is worth noting that the theoretical limit for a classical network with 20 neurons is around 3 patterns.
 \
 \
-In the classical network panel, the arrows show that most corrupted queries are attracted toward the nearest stored pattern: the trajectories are short and oriented toward the reference pattern, indicating correct convergence.
-However, there are some cases where the corrupted query is attracted to the wrong pattern—in particular, M1, M6, and M2 show arrows originating from areas of overlap between adjacent basins—which is consistent with the imperfect recovery rate observed in Experiment 1.
+As you can see from the graph, the result of this overloading is a structural failure, highlighted by the red arrows. Each label shows the corrupted starting point and its theoretical destination, for example $C_0 \to M_1$.
 \
 \
-In the MHN panel, the retrieved states (red squares) are located near the corresponding stored patterns, but with greater dispersion compared to the classical network: this reflects the fact that MHN operates in continuous space and the final retrieval is the result of binarization, not a discrete update.
-Instances of incorrect recovery are visible as red squares located away from the reference pattern, in the same overlapping areas identified for the classical network.
+However, as the space is saturated, the attractors of the classical network collapse and merge. Noise pushes almost all queries over the energy ridges, causing the network to land in spurious minima or in the attractors of the wrong patterns. From a thermodynamic point of view, the network converges, but from a logical point of view, the retrieval is completely derailed.
+\
+\
+If, on the other hand, we turn to the Modern Hopfield Network, tested on the exact same space with the same 12 patterns and the same corrupted queries, the situation is reversed.
+\
+Thanks to the Softmax-based attention rule and continuous energy, the MHN manages to maintain deep and well-separated attractors even under conditions of extremely high density. Note how heavily corrupted queries, such as $C_9$ or $C_0$, slide perfectly and robustly towards their exact origin, $M_1$.
+\
+\
+There is a single visible exception: the red arrow $C_8 \to M_4$, which ends up at $M_{11}$. This is an important detail to highlight: it reminds us that recovery is, after all, a statistical process governed by the temperature parameter $\beta$ and the intensity of the noise introduced, not some kind of magic. 
+\
+However, the visual contrast between the two graphs unequivocally demonstrates the generational leap in geometric capacity offered by the modern network.
+
+Translated with DeepL.com (free version)
+
+
+Translated with DeepL.com (free version)
 
 ### 7.2 t-SNE of Catchment Areas
 
